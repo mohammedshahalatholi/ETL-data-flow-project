@@ -1,6 +1,6 @@
 import requests
 import json
-from grnrator import comment
+from decorator import comment
 response=requests.get("http://127.0.0.1:8000/")
 
 data=response.json()

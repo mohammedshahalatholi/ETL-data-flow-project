@@ -1,5 +1,5 @@
 from datas import listdata
-
+from decorator import comment
 # n=len(listdata)
 
 # out=[]
@@ -17,6 +17,7 @@ from datas import listdata
 #print(out)
 
 ####without using lrn function
+@comment
 def sortlsl():
     datacpy=listdata[:]
     out=[]
@@ -36,7 +37,7 @@ def sortlsl():
 
     print("secontlargest",out[1])
     
-#sortlsl()
+sortlsl()
 def checkl2l():
     datacpy2=listdata[:]
     largest=None
@@ -50,6 +51,6 @@ def checkl2l():
     print(largest)
     print(secmall)
     
-checkl2l()
+#checkl2l()
                 
 
