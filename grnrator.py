@@ -1,7 +1,7 @@
 import time
 
 def comment(num):
-    def dec():
+    def dec(*data):
         print("program started")
         stated=time.time()
         num()
