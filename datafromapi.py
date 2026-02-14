@@ -15,7 +15,7 @@ data=response.json()
 def dupcheck(data):
     datacpy=data.copy()
     out=[]
-    count=0
+    count=1
 #print(datacpy)
 
     while datacpy:
@@ -23,6 +23,11 @@ def dupcheck(data):
         for x in datacpy:
             if x not in out:
                 out.append(x)
+            else:
+                count+=1
         datacpy.remove(x)
 
     print(out)
+    print(count)
+
+#dupcheck(data)
