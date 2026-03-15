@@ -17,3 +17,4 @@ try:
     df.to_sql(name="jobanalysis",con=conn,schema="etlsolar",if_exists="replace",index=False)
 except Exception as e:
     print("error",e)
+    
