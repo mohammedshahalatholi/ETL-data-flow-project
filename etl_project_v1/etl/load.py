@@ -9,7 +9,7 @@ def load_data(loaded_data):
         conn=postger_support.connect_to_db()
         logger.info("database connection established successfully")
         cur=conn.cursor()
-        if table_exists(cur,"etlsolar.loaded_data")==True:
+        if table_exists(cur,schema="etlsolar",table="loaded_data"):
             logger.info("existing table dropping")
             cur.execute("drop table etlsolar.loaded_data")
             logger.info("existing table dropped successfully")
@@ -28,8 +28,16 @@ def load_data(loaded_data):
             conn.close()
             logger.info("database connection closed successfully")
 
-def table_exists(cur,table_name):
-    cur.execute("select exists (select 1 from information_schema.tables where table_name=%s)",(table_name,))
-    print("is table exist?")
+def table_exists(cur, schema, table):
+
+    cur.execute("""
+        SELECT EXISTS (
+            SELECT 1
+            FROM information_schema.tables
+            WHERE table_schema=%s
+            AND table_name=%s
+        )
+    """,(schema,table))
+
     return cur.fetchone()[0]
 
